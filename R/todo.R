@@ -18,6 +18,7 @@ list_tasks <- function() {
   tasks <- readLines(TASK_FILE)
     for (item in tasks) {
     output_string <- paste(output_string, counter, item)
+    counter <- counter + 1
   }
   print(output_string)
 }
