@@ -41,7 +41,7 @@ remove_task <- function(index) {
     stop("no tasks found")
   }
 #check if index is valid
-  if (index <= length(tasks)) {
+  if (index >= 1 && index <= length(tasks)) {
     tasks <- tasks[-index]
 }  else {
     stop("invalid syntax")
