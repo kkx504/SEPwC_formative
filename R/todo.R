@@ -30,45 +30,58 @@ list_tasks <- function() {
 
 
 remove_task <- function(index) {
+#need to check if file exists
+  if (file.exists(TASK_FILE)) {
+    tasks <- readLines(TASK_FILE)
+}  else {
+    stop("Error. No such file exists")
+  }
 #check if task is empty
-#check if the index is valid
-#removing task at specific index
-  tasks <- ""
-  tasks <- readLines(TASK_FILE)
-    if (index < length(tasks))
-      tasks <- tasks[-index]
+  if (length(tasks) == 0) {
+    stop("no tasks found")
+  }
+#check if index is valid
+  if (index <= length(tasks)) {
+    tasks <- tasks[-index]
+}  else {
+    stop("invalid syntax")
+  }
+#remove task at specified index
+  
+#rewrite and success message
+   writeLines(tasks, TASK_FILE)
         
 }
 
 
 
-main <- function(args) {
+#main <- function(args) {
 
-  if (!is.null(args$add)) {
-    add_task(args$add)
-  } else if (args$list) {
-    tasks <- list_tasks()
-    print(tasks)
-  } else if (!is.null(args$remove)) {
-    remove_task(args$remove)
-  } else {
-    print("Use --help to get help on using this program")
-  }
-}
+#  if (!is.null(args$add)) {
+#    add_task(args$add)
+#  } else if (args$list) {
+#    tasks <- list_tasks()
+#    print(tasks)
+#  } else if (!is.null(args$remove)) {
+#    remove_task(args$remove)
+#  } else {
+#    print("Use --help to get help on using this program")
+#  }
+#}
 
 
-if (sys.nframe() == 0) {
+#if (sys.nframe() == 0) {
 
-  # main program, called via Rscript
-  parser <- ArgumentParser(description = "Command-line Todo List")
-  parser$add_argument("-a", "--add",
-                      help = "Add a new task")
-  parser$add_argument("-l", "--list",
-                      action = "store_true",
-                      help = "List all tasks")
-  parser$add_argument("-r", "--remove",
-                      help = "Remove a task by index")
+#  # main program, called via Rscript
+#  parser <- ArgumentParser(description = "Command-line Todo List")
+#  parser$add_argument("-a", "--add",
+#                      help = "Add a new task")
+#  parser$add_argument("-l", "--list",
+#                      action = "store_true",
+#                      help = "List all tasks")
+#  parser$add_argument("-r", "--remove",
+#                      help = "Remove a task by index")
 
-  args <- parser$parse_args()
-  main(args)
-}
+#  args <- parser$parse_args()
+#  main(args)
+#}
