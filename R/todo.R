@@ -30,11 +30,19 @@ list_tasks <- function() {
 
 
 remove_task <- function(index) {
+  counter <- 1 
+  output_string <- ""
   tasks <- readLines(TASK_FILE)
   task_removed <- tasks[-1]
-  print(task_removed)
+  num_tasks <- length(task_removed)
+  for (item in task_removed) {
+    output_string <- paste0(output_string, counter, ". ", item)
+    if (counter < num_tasks)
+      output_string <- paste0(output_string, "\n")
+    counter <- counter + 1
+  }
+  print(output_string)
 }
-
 
 
 
