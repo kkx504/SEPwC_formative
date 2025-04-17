@@ -11,11 +11,17 @@ TASK_FILE <- ".tasks.txt" #nolint
 add_task <- function(task) {
 
 }
-
+#remember to change where .tasks is going
 list_tasks <- function() {
+  counter <- 1 
+  output_string <- ""
   tasks <- readLines(TASK_FILE)
+    for (item in tasks) {
+    output_string <- paste(output_string, counter, item)
+  }
+  print(output_string)
 }
-print(tasks)
+
 
 
 
