@@ -30,18 +30,14 @@ list_tasks <- function() {
 
 
 remove_task <- function(index) {
-  counter <- 1 
-  output_string <- ""
+#check if task is empty
+#check if the index is valid
+#removing task at specific index
+  tasks <- ""
   tasks <- readLines(TASK_FILE)
-  task_removed <- tasks[-1]
-  num_tasks <- length(task_removed)
-  for (item in task_removed) {
-    output_string <- paste0(output_string, counter, ". ", item)
-    if (counter < num_tasks)
-      output_string <- paste0(output_string, "\n")
-    counter <- counter + 1
-  }
-  print(output_string)
+    if (index < length(tasks))
+      tasks <- tasks[-index]
+        
 }
 
 
