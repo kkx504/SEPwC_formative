@@ -3,6 +3,9 @@ suppressPackageStartupMessages({
   library(argparse)
 })
 
+options(python_cmd = "C:/Users/Izzy/AppData/Local/Programs/Python/Python313/python.exe")
+
+
 TASK_FILE <- ".tasks.txt" # nolint
 
 add_task <- function(task) {
