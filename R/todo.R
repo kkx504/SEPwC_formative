@@ -30,8 +30,13 @@ list_tasks <- function() {
 
 
 remove_task <- function(index) {
-
+  tasks <- readLines(TASK_FILE)
+  task_removed <- tasks[-1]
+  print(task_removed)
 }
+
+
+
 
 main <- function(args) {
 
