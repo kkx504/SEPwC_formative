@@ -9,7 +9,7 @@ options(python_cmd = "C:/Users/Izzy/AppData/Local/Programs/Python/Python313/pyth
 TASK_FILE <- ".tasks.txt" #nolint
 
 add_task <- function(task) {
-  write(task, file = TASK_FILE)
+  write(task, file = TASK_FILE, append = TRUE)
 }
 
 #remember to change where .tasks is going
@@ -56,33 +56,33 @@ remove_task <- function(index) {
 
 
 
-#main <- function(args) {
+main <- function(args) {
 
-#  if (!is.null(args$add)) {
-#    add_task(args$add)
-#  } else if (args$list) {
-#    tasks <- list_tasks()
-#    print(tasks)
-#  } else if (!is.null(args$remove)) {
-#    remove_task(args$remove)
-#  } else {
-#    print("Use --help to get help on using this program")
-#  }
-#}
+  if (!is.null(args$add)) {
+    add_task(args$add)
+  } else if (args$list) {
+    tasks <- list_tasks()
+    print(tasks)
+  } else if (!is.null(args$remove)) {
+    remove_task(args$remove)
+  } else {
+    print("Use --help to get help on using this program")
+  }
+}
 
 
-#if (sys.nframe() == 0) {
+if (sys.nframe() == 0) {
 
-#  # main program, called via Rscript
-#  parser <- ArgumentParser(description = "Command-line Todo List")
-#  parser$add_argument("-a", "--add",
-#                      help = "Add a new task")
-#  parser$add_argument("-l", "--list",
-#                      action = "store_true",
-#                      help = "List all tasks")
-#  parser$add_argument("-r", "--remove",
-#                      help = "Remove a task by index")
+  # main program, called via Rscript
+  parser <- ArgumentParser(description = "Command-line Todo List")
+  parser$add_argument("-a", "--add",
+                      help = "Add a new task")
+  parser$add_argument("-l", "--list",
+                      action = "store_true",
+                      help = "List all tasks")
+  parser$add_argument("-r", "--remove",
+                      help = "Remove a task by index")
 
-#  args <- parser$parse_args()
-#  main(args)
-#}
+  args <- parser$parse_args()
+  main(args)
+}
