@@ -12,6 +12,7 @@ add_task <- function(task) {
   write(task, file = TASK_FILE, append = TRUE)
 }
 
+
 #remember to change where .tasks is going
 list_tasks <- function() {
   counter <- 1 
@@ -24,7 +25,7 @@ list_tasks <- function() {
         output_string <- paste0(output_string, "\n")
     counter <- counter + 1
   }
-  print(output_string)
+  return(output_string)
 }
 
 
@@ -57,7 +58,7 @@ remove_task <- function(index) {
 
 
 main <- function(args) {
-
+  
   if (!is.null(args$add)) {
     add_task(args$add)
   } else if (args$list) {
@@ -72,7 +73,7 @@ main <- function(args) {
 
 
 if (sys.nframe() == 0) {
-
+  
   # main program, called via Rscript
   parser <- ArgumentParser(description = "Command-line Todo List")
   parser$add_argument("-a", "--add",
@@ -82,7 +83,7 @@ if (sys.nframe() == 0) {
                       help = "List all tasks")
   parser$add_argument("-r", "--remove",
                       help = "Remove a task by index")
-
+  
   args <- parser$parse_args()
   main(args)
 }
