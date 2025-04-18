@@ -9,7 +9,9 @@ options(python_cmd = "C:/Users/Izzy/AppData/Local/Programs/Python/Python313/pyth
 TASK_FILE <- ".tasks.txt" #nolint
 
 add_task <- function(task) {
-
+  tasks <- readLines(TASK_FILE)
+  writeLines(TASK_FILE, task, append = TRUE)
+  
 }
 #remember to change where .tasks is going
 list_tasks <- function() {
