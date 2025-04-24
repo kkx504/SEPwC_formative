@@ -47,10 +47,8 @@ remove_task <- function(index) {
     tasks <- tasks[-index]
 }  else {
     stop("invalid syntax")
-  }
-#remove task at specified index
-  
-#rewrite and success message
+}
+#rewrite
    writeLines(tasks, TASK_FILE)
         
 }
@@ -66,6 +64,7 @@ main <- function(args) {
     print(tasks)
   } else if (!is.null(args$remove)) {
     remove_task(args$remove)
+    print("Item removed")
   } else {
     print("Use --help to get help on using this program")
   }
